@@ -16,7 +16,7 @@ from summarizer.embeddings import embed_text
 SYSTEM_PROMPT = "You are a concise assistant that summarizes documents in a few sentences."
 
 
-def summarize(client: OpenAI, text: str, model: str = "gpt-3.5-turbo") -> str:
+def summarize(client: OpenAI, text: str, model: str = "gpt-4o-mini") -> str:
     """Return a short summary of ``text`` using the Chat Completion API."""
     response = client.chat.completions.create(
         model=model,
@@ -34,7 +34,7 @@ def main(argv: list[str] | None = None) -> int:
     """Run the CLI. Returns a process exit code."""
     parser = argparse.ArgumentParser(prog="summarizer", description=__doc__)
     parser.add_argument("path", help="Path to the text file to summarize")
-    parser.add_argument("--model", default="gpt-3.5-turbo", help="Chat model to use")
+    parser.add_argument("--model", default="gpt-4o-mini", help="Chat model to use")
     parser.add_argument(
         "--embed",
         action="store_true",
